@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>CI/CD Demo</title>
-  </head>
-  <body>
-    <h1>Halo dari GitHub Actions!</h1>
-  </body>
-</html>
+// server.js
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+  res.send("Halo dari CI/CD Express!");
+});
+
+app.listen(port, () => {
+  console.log(`Server jalan di http://localhost:${port}`);
+});
