@@ -1,4 +1,4 @@
-name: CI/CD Simulasi (Express)
+name: CI/CD Simulasi Static Website
 
 on:
   push:
@@ -10,17 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout kode
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Simulasi Build/Testing
-        run: echo "Build sukses"
-
-      - name: Jalankan server di background & test curl
+      - name: Simulasi Build (contoh)
         run: |
-          node server.js &
-          sleep 3
-          curl http://localhost:3000
+          echo "Build dimulai..."
+          mkdir build
+          cp index.html build/
+          echo "Build selesai dan disimpan ke folder build/"
+
+      - name: Simulasi Deploy
+        run: |
+          echo "Simulasi deploy ke folder lokal 'deploy'"
+          mkdir -p deploy
+          cp build/index.html deploy/
+          echo "Deploy selesai ke folder deploy/"
+
+      - name: Simulasi Tes (curl ke localhost)
+        run: |
+          echo "Karena ini file static, gak bisa curl ke localhost"
+          echo "Simulasi test selesai."
